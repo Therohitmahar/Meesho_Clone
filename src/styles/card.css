@@ -1,0 +1,16 @@
+.card-container{
+    background-color: #c75a5a;
+    width: 406px;
+    height: 234px;
+    padding: 10px;
+}
+
+.card-container .card-image img{
+    width: 100%;
+    padding: 10px;
+}
+.card-details{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(19, 143, 143);
+}
