@@ -15,18 +15,25 @@
 .suplier, .profile, .cart{
     padding: 10px;
 }
+a{
+    text-decoration: none;
+}
 .cart{
     margin-right: 10px;
 }
-
-
-.logo{
-    padding: 10px;
-   
-    height: 95%;
-    margin: 10px;
+.logo a img{
+    box-sizing: border-box;
+    
+    scale: 0.6;
+    height: 55%;
+    
     padding: 15px;
     margin-bottom: 10px;
+}
+.search-container .css-i4bv87-MuiSvgIcon-root{
+    position: absolute;
+    top: 9px;
+    left: 10px;
 }
 .border-right{
    display: flex;
@@ -38,7 +45,6 @@
 }
 .download{
    display: flex;
-   flex-direction: column;
    padding: 10px;
    
 }
@@ -46,6 +52,7 @@
     width: 350px;
     min-width: 200px;
     max-width: 500px;
+    position: relative;
     
 }
 #nav-search{
@@ -55,10 +62,13 @@
     border-radius: 4px;
     font-size: 15px;
     width: 100%;
-    padding: 10px;
+    padding-left: 40px;
 }
 .lower-nav{
     border-bottom:1px solid rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    z-index: 1;
 }
 .lower-nav ul{
     list-style: none;
@@ -67,4 +77,33 @@
 }
 .lower-nav ul:last-child{
     margin-right: 10px;
+}
+.lower-nav ul{
+    padding:  0;
+    margin: 0;
+}
+.lower-nav ul li{
+    cursor: pointer;
+    padding: 13px;  
+    border-bottom: 4px solid white;
+}
+.lower-nav ul li:hover{
+border-bottom: 4px solid #ff01dd;
+color: #ff01dd;
+font-weight: 500;
+}
+.cart, .profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-text{
+    text-decoration: none;
+}
+.cartIcon{
+    color: aqua;
+}
+.cart p, .profile p{
+    margin: 0;
 }
