@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Meesho-Clone/static/css/main.7c91c552.css",
-    "main.js": "/Meesho-Clone/static/js/main.38f5b933.js",
-    "static/js/787.7bccd639.chunk.js": "/Meesho-Clone/static/js/787.7bccd639.chunk.js",
-    "index.html": "/Meesho-Clone/index.html",
-    "main.7c91c552.css.map": "/Meesho-Clone/static/css/main.7c91c552.css.map",
-    "main.38f5b933.js.map": "/Meesho-Clone/static/js/main.38f5b933.js.map",
-    "787.7bccd639.chunk.js.map": "/Meesho-Clone/static/js/787.7bccd639.chunk.js.map"
+    "main.css": "/Meesho_Clone/static/css/main.7c91c552.css",
+    "main.js": "/Meesho_Clone/static/js/main.9255f096.js",
+    "static/js/787.7bccd639.chunk.js": "/Meesho_Clone/static/js/787.7bccd639.chunk.js",
+    "index.html": "/Meesho_Clone/index.html",
+    "main.7c91c552.css.map": "/Meesho_Clone/static/css/main.7c91c552.css.map",
+    "main.9255f096.js.map": "/Meesho_Clone/static/js/main.9255f096.js.map",
+    "787.7bccd639.chunk.js.map": "/Meesho_Clone/static/js/787.7bccd639.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7c91c552.css",
-    "static/js/main.38f5b933.js"
+    "static/js/main.9255f096.js"
   ]
 }
