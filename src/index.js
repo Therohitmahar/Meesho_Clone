@@ -4,15 +4,22 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-
+import Context from "./context/Context";
+import { Auth0Provider } from "@auth0/auth0-react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Context>
+      <Auth0Provider
+        domain="meesho.us.auth0.com"
+        clientId="SMQ3p6jnvxVyUDZ26KvMJMLiEMCNaHvf"
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
+        <App />
+      </Auth0Provider>
+    </Context>
   </BrowserRouter>
 );
 

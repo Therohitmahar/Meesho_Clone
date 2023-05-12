@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import addCart from "../../redux/action";
+import { useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import "./product.css";
+import { InfoState } from "../../context/Context";
 
 const Product = () => {
   let { Id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const dispatch = useDispatch();
-  const addProduct = (product) => {
-    dispatch(addCart(product));
-  };
+  const [goToCart, setGoToCart] = useState(false);
+  const navigate = useNavigate();
+  const { state: { cart },
+    dispatch, } = InfoState();
+  console.log("this is in the ", [cart]);
 
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      const respornse = await fetch(`https://fakestoreapi.com/products/${Id}`);
-      setProduct(await respornse.json());
+      const response = await fetch(`https://fakestoreapi.com/products/${Id}`);
+      setProduct(await response.json());
       setLoading(false);
     };
 
@@ -47,13 +46,33 @@ const Product = () => {
             />
           </div>
           <div className="button-holder">
-            <button
+
+            {!goToCart ? (<button
               className="btn addToCart"
-              onClick={() => addProduct(product)}
+              onClick={() => {
+                dispatch({
+                  type: "addToCart",
+                  payload: product
+                })
+                setGoToCart(true);
+              }
+              }
             >
               <ShoppingCartIcon />
               Add to Cart
-            </button>
+            </button>) :
+              (<button
+                className="btn addToCart"
+                onClick={() => {
+                  navigate("/")
+                  navigate('/cart')
+                }
+                }
+              >
+                <ShoppingCartIcon />
+                Go to Cart
+              </button>)}
+
             <button className="btn buybtn">
               <KeyboardDoubleArrowRightIcon />
               Buy Now

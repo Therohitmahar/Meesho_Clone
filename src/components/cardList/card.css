@@ -1,9 +1,11 @@
  *{
     box-sizing: border-box;
  }
+
  .card-container{    
-    height: 400px;
-    padding: 10px;
+    height: 300px;
+    padding: 20px 10px; 
+    box-sizing: content-box;
     aspect-ratio: 4.4/6;
     border-radius: 3%;
     border: 1px solid rgba(75, 74, 74, 0.3);
@@ -23,8 +25,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 66%;
+    height: 60%;
    
+}
+.card-price{
+    margin: 10px;
+}
+.cart-title{
+    font-weight: bold;
+    color: grey;
 }
 
 .card-image img{
@@ -39,7 +48,30 @@
     overflow: hidden;
 } 
 .star{
-    background-color: #00ff00;
-    border-radius: 30%;
-    border: 0.1px solid rgba(104, 104, 104, 0.418);
+    background-color: rgb(13, 194, 109);
+    color: white;
+    font-weight: bold;
+    width: 50px;
+    aspect-ratio: 12/5;
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+}
+.onwards{
+    font-weight: 100;
+    font-size: 12px;
+    color: grey;
+}
+.review-count{
+    font-weight: bold;
+    font-size: 12px;
+    color: grey;
+    margin-left: 5px;
+}
+.free-delivery-card{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    margin-left: 5px;
+    margin-bottom: 10px;
 }

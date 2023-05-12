@@ -4,17 +4,22 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import { Link, Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
 import "./nav.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { InfoState } from "../../context/Context";
 
 export const Nav = () => {
-  const state = useSelector((state) => state.handleCart);
+  const { logout, loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const { state: { cart } } = InfoState();
   return (
     <div>
       <div className="nav-container">
         <div className="logo">
           <Link to="/">
-            <img src="https://seeklogo.com/images/M/meesho-logo-2E20AB77E8-seeklogo.com.png" />
+            <img
+              src="https://seeklogo.com/images/M/meesho-logo-2E20AB77E8-seeklogo.com.png"
+              alt="Meesho_logo"
+            />
           </Link>
         </div>
         <div className="search-container">
@@ -22,7 +27,7 @@ export const Nav = () => {
           <input
             type="text"
             id="nav-search"
-            placeholder="Try Saree, Kurta or Search by Prodect Code "
+            placeholder="Try Saree, Kurta or Search by Product Code "
           />
         </div>
         <div className="download border-right">
@@ -35,13 +40,24 @@ export const Nav = () => {
         <Link to="/profile">
           <div className="profile">
             <AccountBoxIcon />
-            <p>Profile</p>
-          </div>
-        </Link>
+            <p>Profile</p></div>
+          {/* <div className="profile-dropdown">
+            <p>Hello User</p>
+            <span className="profile-span">
+              To access your Meesho account
+            </span>
+            <button>login</button>
 
+          </div> */}
+        </Link>
+        {/* {isAuthenticated ? (
+          <button onClick={() => logout()}>Log out</button>
+        ) : (
+          <button onClick={() => loginWithRedirect()}>Log In</button>
+        )} */}
         <Link to="/cart">
           <div className="cart">
-            <ShoppingCartIcon /> <p>Cart ({state.length})</p>
+            <ShoppingCartIcon /> <p>Cart ({cart.length})</p>
           </div>
         </Link>
       </div>
