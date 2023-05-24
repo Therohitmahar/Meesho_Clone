@@ -1,21 +1,54 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import { Link, Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import "./nav.css";
-import { useAuth0 } from "@auth0/auth0-react";
 import { InfoState } from "../../context/Context";
+import SearchedItem from "./SearchedItem";
 
 export const Nav = () => {
-  const { logout, loginWithRedirect, user, isAuthenticated } = useAuth0();
-  const { state: { cart } } = InfoState();
+  const [searchInput, setSearchInput] = useState();
+  const { state: { cart }, info, } = InfoState();
+  const [filteredData, setFilteredData] = useState();
+  const [showSearch, setShowSearch] = useState(false)
+  const inputRef = useRef()
+
+
+  function handleSearchBar(e) {
+    setSearchInput(e.target.value);
+    setShowSearch(true)
+    inputRef.current.onfocus = () => {
+      setShowSearch(true);
+    }
+
+    inputRef.current.onblur = () => {
+      setTimeout(() => { setShowSearch(false); }, 300);
+    }
+
+
+  }
+
+  useEffect(() => {
+    if (info == undefined) { return null }
+    else {
+      setFilteredData(info.filter(item => {
+        if (item == null) return;
+        else
+          return item.title.toLowerCase()
+            .includes(searchInput.toLowerCase())
+      }))
+    }
+  }, [searchInput])
+
   return (
     <div>
-      <div className="nav-container">
-        <div className="logo">
-          <Link to="/">
+      <div className="nav-container">console
+        <div className="logo" onClick={() => {
+          setSearchInput("")
+        }}>
+          <Link to="/" >
             <img
               src="https://seeklogo.com/images/M/meesho-logo-2E20AB77E8-seeklogo.com.png"
               alt="Meesho_logo"
@@ -25,14 +58,21 @@ export const Nav = () => {
         <div className="search-container">
           <SearchIcon />
           <input
+            ref={inputRef}
             type="text"
             id="nav-search"
+            onChange={handleSearchBar}
             placeholder="Try Saree, Kurta or Search by Product Code "
           />
+          {showSearch && <div className='searched-item'>{
+            filteredData && filteredData.map((item) => {
+              return filteredData.length == 0 ? null : <SearchedItem key={item.id} id={item.id} title={item.title.split(" ").slice(0, 6).join(' ')} />
+            })
+          }</div>}
         </div>
         <div className="download border-right">
-          <PhoneIphoneIcon color="primary" />
-          <p>Download App</p>
+          <a href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"><PhoneIphoneIcon color="primary" />
+            <p>Download App</p></a>
         </div>
         <div className="border-right suplier">
           <p>Become a Supplier</p>

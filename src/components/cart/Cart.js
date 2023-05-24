@@ -86,7 +86,7 @@ import { InfoState } from "../../context/Context";
 function Cart() {
 
   const { state: { cart } } = InfoState();
-  console.log(cart);
+
   return (<>
     {cart.length > 0 ? <div className="cart-page">
       <div className="left-cart">

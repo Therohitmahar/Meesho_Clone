@@ -55,7 +55,7 @@ function Checkout() {
         <div style={{ display: "flex", margin: "auto", width: "90vw" }}>
             {cart.length > 0 && <div className="left-cart">
                 <div className='ETA' style={{ display: "flex", justifyContent: "center", border: "1px solid grey", margin: "5px", width: "90%", padding: "5px" }}>
-                    <FiTruck /> Estimated Delivery by {getDate > 29 ? 5 : getDate}/{deliveryDate.getUTCMonth()}/{deliveryDate.getFullYear()}
+                    <FiTruck /> Estimated Delivery by {getDate > 29 ? 5 : getDate}/{deliveryDate.getUTCMonth() + 1}/{deliveryDate.getFullYear()}
 
                 </div>
                 {cart.map((item) => {
