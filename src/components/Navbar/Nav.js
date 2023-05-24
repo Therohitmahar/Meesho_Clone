@@ -30,21 +30,22 @@ export const Nav = () => {
 
   }
 
-  useEffect(() => {
+  function handleFilter() {
     if (info == undefined) { return null }
     else {
-      setFilteredData(info.filter(item => {
+      const filteringData = info.filter(item => {
         if (item == null) return;
         else
           return item.title.toLowerCase()
             .includes(searchInput.toLowerCase())
-      }))
+      })
+      setFilteredData(filteringData)
     }
-  }, [searchInput])
+  }
 
   return (
     <div>
-      <div className="nav-container">console
+      <div className="nav-container">
         <div className="logo" onClick={() => {
           setSearchInput("")
         }}>
@@ -61,7 +62,10 @@ export const Nav = () => {
             ref={inputRef}
             type="text"
             id="nav-search"
-            onChange={handleSearchBar}
+            onChange={(e) => {
+              handleSearchBar(e)
+              handleFilter()
+            }}
             placeholder="Try Saree, Kurta or Search by Product Code "
           />
           {showSearch && <div className='searched-item'>{
